@@ -10,7 +10,8 @@ interface BaseReactGoogleSlidesProps {
   width?: string | number;
   containerStyle?: object | null;
   ErrorComponent?: React.ReactNode | React.ElementType;
-  iframeRef: any
+  iframeRef: any,
+  iframeId: string
 }
 
 export type ReactGoogleSlidesProps = BaseReactGoogleSlidesProps &
@@ -77,6 +78,7 @@ const ReactGoogleSlides: React.FC<ReactGoogleSlidesProps> = ({
   containerStyle = null,
   ErrorComponent,
   iframeRef,
+  iframeId,
   ...props
 }) => {
   const presentationKey = extractSlidesKey(slidesLink);
@@ -100,6 +102,7 @@ const ReactGoogleSlides: React.FC<ReactGoogleSlidesProps> = ({
       style={containerStyle ? containerStyle : { border: 0 }}
       allowFullScreen={true}
       ref={iframeRef}
+      id={iframeId}
       {...props}
     />
   );
